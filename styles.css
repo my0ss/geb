@@ -9,63 +9,65 @@
 body {
     background-color: #4A90E2;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    min-height: 100vh;
-    padding: 20px;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
 /* Container for content */
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Header text styling */
-h1 {
-    color: white;
-    font-size: 48px;
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-align: center;
-    margin-bottom: 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Grid layout */
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 30px;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2vmin;
+    padding: 2vmin;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-/* Tile styling */
+/* Tile styling - optimized for touch */
 .tile {
-    background: linear-gradient(145deg, #ffffff, #f0f0f0);
-    border-radius: 24px;
-    padding: 35px 20px;
+    background: linear-gradient(145deg, #ffffff 0%, #f5f5f5 50%, #e8e8e8 100%);
+    border-radius: clamp(12px, 3vmin, 24px);
+    padding: 0;
     text-align: center;
     text-decoration: none;
     color: #333;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.2s ease-out;
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.15),
-        0 1px 8px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        0 12px 35px rgba(0, 0, 0, 0.18),
+        0 4px 12px rgba(0, 0, 0, 0.12),
+        inset 0 2px 0 rgba(255, 255, 255, 1),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 160px;
+    width: 100%;
+    height: 100%;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    transform: translateZ(0);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-top: 2px solid rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     -webkit-user-select: none;
+    touch-action: manipulation;
 }
 
+/* Subtle gradient overlay - always visible */
 .tile::before {
     content: '';
     position: absolute;
@@ -74,14 +76,15 @@ h1 {
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg,
-        rgba(74, 144, 226, 0.15) 0%,
-        rgba(155, 89, 182, 0.1) 50%,
-        rgba(52, 152, 219, 0.15) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 24px;
+        rgba(74, 144, 226, 0.08) 0%,
+        rgba(155, 89, 182, 0.05) 50%,
+        rgba(52, 152, 219, 0.08) 100%);
+    border-radius: 22px;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
 }
 
+/* Shimmer effect */
 .tile::after {
     content: '';
     position: absolute;
@@ -97,19 +100,25 @@ h1 {
     );
     transform: rotate(45deg);
     transition: all 0.6s ease;
+    pointer-events: none;
 }
 
-/* Touch/Active state for mobile - replaces hover */
+/* Touch/Tap feedback */
 .tile:active {
-    transform: scale(0.95) translateY(2px);
+    transform: scale(0.95) translateY(4px);
     box-shadow:
-        0 5px 15px rgba(0, 0, 0, 0.2),
-        0 2px 8px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        0 4px 12px rgba(0, 0, 0, 0.22),
+        0 2px 6px rgba(0, 0, 0, 0.18),
+        inset 0 1px 2px rgba(0, 0, 0, 0.1),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.5);
+    transition: all 0.1s ease-out;
 }
 
 .tile:active::before {
-    opacity: 1;
+    background: linear-gradient(135deg,
+        rgba(74, 144, 226, 0.2) 0%,
+        rgba(155, 89, 182, 0.12) 50%,
+        rgba(52, 152, 219, 0.2) 100%);
 }
 
 .tile:active::after {
@@ -117,56 +126,27 @@ h1 {
 }
 
 .tile:active .tile-icon {
-    transform: scale(0.9);
+    transform: scale(0.92);
 }
 
 .tile:active .tile-title {
     color: #4A90E2;
 }
 
-/* Hover effects for desktop only */
-@media (hover: hover) and (pointer: fine) {
-    .tile:hover {
-        transform: perspective(1000px) translateZ(20px) translateY(-8px) rotateX(5deg);
-        box-shadow:
-            0 20px 40px rgba(0, 0, 0, 0.2),
-            0 5px 15px rgba(0, 0, 0, 0.15),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9),
-            0 0 20px rgba(74, 144, 226, 0.3);
-    }
-
-    .tile:hover::before {
-        opacity: 1;
-    }
-
-    .tile:hover::after {
-        left: 150%;
-    }
-
-    .tile:hover .tile-icon {
-        transform: scale(1.15) translateY(-3px);
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-    }
-
-    .tile:hover .tile-title {
-        color: #4A90E2;
-        transform: translateY(-2px);
-    }
-}
-
 /* Tile icon */
 .tile-icon {
-    font-size: 56px;
-    margin-bottom: 12px;
+    font-size: 8vmin;
+    margin-bottom: 1vmin;
     position: relative;
     z-index: 1;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
     transition: all 0.2s ease;
+    line-height: 1;
 }
 
 /* Tile title */
 .tile-title {
-    font-size: 17px;
+    font-size: 2.5vmin;
     font-weight: 600;
     color: #2c3e50;
     position: relative;
@@ -174,58 +154,27 @@ h1 {
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
     transition: all 0.2s ease;
     letter-spacing: 0.5px;
+    line-height: 1.2;
 }
 
-
-/* Mobile optimization */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 36px;
-        margin-bottom: 30px;
-    }
-
-    .container {
-        padding: 10px;
-    }
-
-    .grid {
-        gap: 14px;
-    }
-
-    .tile {
-        min-height: 145px;
-        padding: 30px 15px;
-        border-radius: 20px;
-    }
-
+/* Landscape orientation - keep proportions consistent */
+@media (orientation: landscape) {
     .tile-icon {
-        font-size: 48px;
-        margin-bottom: 10px;
+        font-size: 6vmin;
     }
 
     .tile-title {
-        font-size: 15px;
+        font-size: 2vmin;
     }
 }
 
-/* Small phones - larger touch targets */
-@media (max-width: 400px) {
+/* Support for notched phones (iPhone X and newer) */
+@supports (padding: max(0px)) {
     .grid {
-        gap: 12px;
-    }
-
-    .tile {
-        min-height: 130px;
-        padding: 25px 12px;
-        border-radius: 18px;
-    }
-
-    .tile-icon {
-        font-size: 44px;
-    }
-
-    .tile-title {
-        font-size: 14px;
+        padding-left: max(2vmin, env(safe-area-inset-left));
+        padding-right: max(2vmin, env(safe-area-inset-right));
+        padding-top: max(2vmin, env(safe-area-inset-top));
+        padding-bottom: max(2vmin, env(safe-area-inset-bottom));
     }
 }
 
