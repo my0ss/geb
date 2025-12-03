@@ -9,8 +9,38 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Geb</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const introPresent = document.getElementById('introPresent');
+            const introOverlay = document.getElementById('introOverlay');
+
+            introPresent.addEventListener('click', function() {
+                // Add opening animation
+                introPresent.classList.add('opening');
+
+                // Wait for animation to complete, then hide overlay
+                setTimeout(function() {
+                    introOverlay.classList.add('hidden');
+                }, 800);
+            });
+        });
+    </script>
 </head>
 <body>
+    <!-- Intro overlay with present -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-present" id="introPresent">
+            <div class="present-box">
+                <div class="present-lid">
+                    <div class="bow">🎀</div>
+                </div>
+                <div class="present-body">🎁</div>
+            </div>
+            <div class="intro-text">Do the auspack</div>
+        </div>
+    </div>
+
+    <!-- Decorative presents - snowfall effect -->
     <div class="present present-1">🐻</div>
     <div class="present present-2">🐻</div>
     <div class="present present-3">🐻</div>
