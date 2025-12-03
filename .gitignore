@@ -1,0 +1,14 @@
+# IDE
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
+
+# Build files
+dist/
+build/
+
+# Dependencies
+node_modules/
+
