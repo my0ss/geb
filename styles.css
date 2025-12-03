@@ -1,5 +1,5 @@
-/* Import font */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Caveat+Brush&display=swap');
 
 /* Reset default margins and padding */
 * {
@@ -8,15 +8,26 @@
     box-sizing: border-box;
 }
 
+/* Prevent scrolling on html and body */
+html {
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
 /* Body styling with blue background */
 body {
-    background-color: #4A90E2;
+    background-color: rgba(74, 144, 226, 0.43);
     font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    height: 100dvh;
+    height: 100%;
+    width: 100%;
     padding: 0;
     margin: 0;
     overflow: hidden;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 /* Additional present decorations */
@@ -305,6 +316,147 @@ body {
     flex-direction: column;
     position: relative;
     z-index: 1;
+    padding: 2vmin 2vmin 0;
+}
+
+/* Header text at the top */
+.header-text {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 10vmin;
+    color: white;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 2vmin;
+    flex-shrink: 0;
+}
+
+.header-text span {
+    display: inline-block;
+    text-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        0 8px 16px rgba(0, 0, 0, 0.2),
+        0 12px 24px rgba(0, 0, 0, 0.1);
+    animation: float-letter 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* Floating animation for individual letters */
+@keyframes float-letter {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
+}
+
+/* Subtle wobble animations for tiles */
+@keyframes tile-wobble-1 {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    17% {
+        transform: translateY(-1px) translateX(1px) rotate(0.2deg);
+    }
+    43% {
+        transform: translateY(1.5px) translateX(-1px) rotate(-0.3deg);
+    }
+    68% {
+        transform: translateY(-1px) translateX(1.5px) rotate(0.15deg);
+    }
+    89% {
+        transform: translateY(1px) translateX(-1px) rotate(-0.2deg);
+    }
+}
+
+@keyframes tile-wobble-2 {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    22% {
+        transform: translateY(1.5px) translateX(-1.5px) rotate(-0.25deg);
+    }
+    51% {
+        transform: translateY(-1px) translateX(1px) rotate(0.3deg);
+    }
+    73% {
+        transform: translateY(1px) translateX(1.5px) rotate(0.2deg);
+    }
+    91% {
+        transform: translateY(-1.5px) translateX(-1px) rotate(-0.15deg);
+    }
+}
+
+@keyframes tile-wobble-3 {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    19% {
+        transform: translateY(-1.5px) translateX(1.5px) rotate(0.25deg);
+    }
+    47% {
+        transform: translateY(1px) translateX(-1px) rotate(-0.2deg);
+    }
+    64% {
+        transform: translateY(-1px) translateX(-1.5px) rotate(-0.3deg);
+    }
+    85% {
+        transform: translateY(1.5px) translateX(1px) rotate(0.15deg);
+    }
+}
+
+@keyframes tile-wobble-4 {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    26% {
+        transform: translateY(1px) translateX(1.5px) rotate(-0.3deg);
+    }
+    53% {
+        transform: translateY(-1.5px) translateX(-1px) rotate(0.25deg);
+    }
+    77% {
+        transform: translateY(1.5px) translateX(-1.5px) rotate(-0.2deg);
+    }
+    93% {
+        transform: translateY(-1px) translateX(1px) rotate(0.15deg);
+    }
+}
+
+@keyframes tile-wobble-5 {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    21% {
+        transform: translateY(-1px) translateX(-1.5px) rotate(-0.2deg);
+    }
+    49% {
+        transform: translateY(1.5px) translateX(1px) rotate(0.3deg);
+    }
+    71% {
+        transform: translateY(-1.5px) translateX(1.5px) rotate(0.25deg);
+    }
+    88% {
+        transform: translateY(1px) translateX(-1px) rotate(-0.15deg);
+    }
+}
+
+@keyframes tile-wobble-6 {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    24% {
+        transform: translateY(1.5px) translateX(-1px) rotate(0.15deg);
+    }
+    56% {
+        transform: translateY(-1px) translateX(1.5px) rotate(-0.25deg);
+    }
+    79% {
+        transform: translateY(1px) translateX(1px) rotate(0.3deg);
+    }
+    95% {
+        transform: translateY(-1.5px) translateX(-1.5px) rotate(-0.2deg);
+    }
 }
 
 /* Grid layout */
@@ -313,9 +465,9 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 2vmin;
-    padding: 2vmin;
+    padding: 0 0 2vmin 0;
     width: 100%;
-    height: 100%;
+    flex: 1;
     box-sizing: border-box;
 }
 
@@ -349,6 +501,32 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    animation: tile-wobble 4s ease-in-out infinite;
+}
+
+/* Individual tile wobble variations */
+.tile:nth-child(1) {
+    animation: tile-wobble-1 5.3s ease-in-out infinite;
+}
+
+.tile:nth-child(2) {
+    animation: tile-wobble-2 4.7s ease-in-out infinite;
+}
+
+.tile:nth-child(3) {
+    animation: tile-wobble-3 6.1s ease-in-out infinite;
+}
+
+.tile:nth-child(4) {
+    animation: tile-wobble-4 4.2s ease-in-out infinite;
+}
+
+.tile:nth-child(5) {
+    animation: tile-wobble-5 5.8s ease-in-out infinite;
+}
+
+.tile:nth-child(6) {
+    animation: tile-wobble-6 4.9s ease-in-out infinite;
 }
 
 /* Subtle gradient overlay - always visible */
