@@ -16,6 +16,285 @@ body {
     padding: 0;
     margin: 0;
     overflow: hidden;
+    position: relative;
+}
+
+/* Additional present decorations */
+.present {
+    position: absolute;
+    font-size: 4vmin;
+    z-index: 10;
+    pointer-events: none;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+}
+
+.present-1 {
+    left: 5%;
+    font-size: 3.5vmin;
+    animation: fall-right 14s linear infinite;
+    animation-delay: 0s;
+}
+
+.present-2 {
+    left: 15%;
+    font-size: 4vmin;
+    animation: fall-left 18s linear infinite;
+    animation-delay: -3s;
+}
+
+.present-3 {
+    left: 25%;
+    font-size: 3vmin;
+    animation: fall-right 16s linear infinite;
+    animation-delay: -7s;
+}
+
+.present-4 {
+    left: 35%;
+    font-size: 4.5vmin;
+    animation: fall-left-strong 20s linear infinite;
+    animation-delay: -2s;
+}
+
+.present-5 {
+    left: 45%;
+    font-size: 3.2vmin;
+    animation: fall-right 15s linear infinite;
+    animation-delay: -9s;
+}
+
+.present-6 {
+    left: 55%;
+    font-size: 3.8vmin;
+    animation: fall-left 17s linear infinite;
+    animation-delay: -5s;
+}
+
+.present-7 {
+    left: 65%;
+    font-size: 4.2vmin;
+    animation: fall-right-strong 19s linear infinite;
+    animation-delay: -11s;
+}
+
+.present-8 {
+    left: 75%;
+    font-size: 3.3vmin;
+    animation: fall-left 16s linear infinite;
+    animation-delay: -4s;
+}
+
+.present-9 {
+    left: 85%;
+    font-size: 4vmin;
+    animation: fall-right 21s linear infinite;
+    animation-delay: -8s;
+}
+
+.present-10 {
+    left: 95%;
+    font-size: 3.6vmin;
+    animation: fall-left-strong 15s linear infinite;
+    animation-delay: -12s;
+}
+
+.present-11 {
+    left: 10%;
+    font-size: 4.3vmin;
+    animation: fall-left 22s linear infinite;
+    animation-delay: -6s;
+}
+
+.present-12 {
+    left: 30%;
+    font-size: 3.4vmin;
+    animation: fall-right-strong 17s linear infinite;
+    animation-delay: -10s;
+}
+
+.present-13 {
+    left: 50%;
+    font-size: 3.9vmin;
+    animation: fall-right 19s linear infinite;
+    animation-delay: -1s;
+}
+
+.present-14 {
+    left: 70%;
+    font-size: 4.1vmin;
+    animation: fall-left 18s linear infinite;
+    animation-delay: -13s;
+}
+
+.present-15 {
+    left: 90%;
+    font-size: 3.7vmin;
+    animation: fall-right-strong 20s linear infinite;
+    animation-delay: -15s;
+}
+
+.present-16 {
+    left: 8%;
+    font-size: 3.6vmin;
+    animation: fall-left-strong 16s linear infinite;
+    animation-delay: -4.5s;
+}
+
+.present-17 {
+    left: 18%;
+    font-size: 4.4vmin;
+    animation: fall-right 19s linear infinite;
+    animation-delay: -8.5s;
+}
+
+.present-18 {
+    left: 28%;
+    font-size: 3.1vmin;
+    animation: fall-left 15s linear infinite;
+    animation-delay: -11.5s;
+}
+
+.present-19 {
+    left: 38%;
+    font-size: 3.8vmin;
+    animation: fall-right-strong 21s linear infinite;
+    animation-delay: -2.5s;
+}
+
+.present-20 {
+    left: 48%;
+    font-size: 4.2vmin;
+    animation: fall-left-strong 17s linear infinite;
+    animation-delay: -14s;
+}
+
+.present-21 {
+    left: 58%;
+    font-size: 3.5vmin;
+    animation: fall-right 18s linear infinite;
+    animation-delay: -6.5s;
+}
+
+.present-22 {
+    left: 68%;
+    font-size: 4vmin;
+    animation: fall-left 20s linear infinite;
+    animation-delay: -9.5s;
+}
+
+.present-23 {
+    left: 78%;
+    font-size: 3.3vmin;
+    animation: fall-right-strong 16s linear infinite;
+    animation-delay: -3.5s;
+}
+
+.present-24 {
+    left: 88%;
+    font-size: 4.3vmin;
+    animation: fall-left-strong 19s linear infinite;
+    animation-delay: -12.5s;
+}
+
+.present-25 {
+    left: 42%;
+    font-size: 3.9vmin;
+    animation: fall-right 22s linear infinite;
+    animation-delay: -7.5s;
+}
+
+/* Diagonal falling animations - to the right */
+@keyframes fall-right {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateX(60px) rotate(180deg);
+    }
+    95% {
+        opacity: 0.6;
+    }
+    100% {
+        top: 110%;
+        transform: translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Diagonal falling animations - to the left */
+@keyframes fall-left {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateX(-60px) rotate(-180deg);
+    }
+    95% {
+        opacity: 0.6;
+    }
+    100% {
+        top: 110%;
+        transform: translateX(-100px) rotate(-360deg);
+        opacity: 0;
+    }
+}
+
+/* Strong diagonal - to the right */
+@keyframes fall-right-strong {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateX(100px) rotate(270deg);
+    }
+    95% {
+        opacity: 0.6;
+    }
+    100% {
+        top: 110%;
+        transform: translateX(150px) rotate(540deg);
+        opacity: 0;
+    }
+}
+
+/* Strong diagonal - to the left */
+@keyframes fall-left-strong {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateX(-100px) rotate(-270deg);
+    }
+    95% {
+        opacity: 0.6;
+    }
+    100% {
+        top: 110%;
+        transform: translateX(-150px) rotate(-540deg);
+        opacity: 0;
+    }
 }
 
 /* Container for content */
@@ -24,6 +303,8 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 1;
 }
 
 /* Grid layout */
